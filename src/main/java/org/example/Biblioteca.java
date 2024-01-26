@@ -59,22 +59,20 @@ public class Biblioteca {
 //
 //        Rivista r3 = new Rivista("Time", 2023, 120, Periodicita.SETTIMANALE);
 //        elementoD.save(r3);
-
-        Elemento l3 = (Rivista) elementoD.getById(9);
-        Utente u3 = utenteD.getById(7);
-
-
-
-
+//
+//
 //        Libro l4 = new Libro("Cronache di Narnia", 1950, 756,
 //                "C.S. Lewis", Genere.FANTASIA);
 //        elementoD.save(l4);
+
+          Elemento l3 = (Rivista) elementoD.getById(9);
+          Utente u3 = utenteD.getById(7);
 
           elementoD.getByAutore("Tolkien").stream().forEach(System.out::println);
           Libro l4 = (Libro) elementoD.getById(2);
           System.out.println(l4);
 
-          Prestito p3 = new Prestito(l4, u3, LocalDate.of(2023, 10, 15), LocalDate.of(2023, 11, 15),
+          Prestito p3 = new Prestito(l4, u3, LocalDate.of(20244, 12, 15), LocalDate.of(2023, 11, 15),
                 null);
           prestitoD.save(p3);
 

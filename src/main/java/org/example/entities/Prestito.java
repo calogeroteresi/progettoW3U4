@@ -105,7 +105,7 @@ public class Prestito {
         return "Prestito{" +
                 "id=" + id +
                 ", titolo='" + tipoDescrizione + '\'' +
-                "isbn"+ elemento.getIsbn()+
+                "isbn= "+ elemento.getIsbn()+
                 ", dataInizioPrestito=" + dataInizioPrestito +
                 ", dataRestituzionePrevista=" + dataRestituzionePrevista +
                 ", dataRestituzioneEffettiva=" + dataRestituzioneEffettivaDescrizione +

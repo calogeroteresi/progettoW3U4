@@ -1,6 +1,5 @@
 package org.example.dao;
 
-
 import org.example.entities.Utente;
 
 import javax.persistence.EntityManager;
@@ -12,14 +11,14 @@ public class UtenteDao {
     private EntityManagerFactory emf;
     private EntityManager em;
 
-
-    public UtenteDao(){
+    // Costruttore: inizializza l'EntityManagerFactory e l'EntityManager
+    public UtenteDao() {
         emf = Persistence.createEntityManagerFactory("biblioteca");
         em = emf.createEntityManager();
     }
 
-
-    public void save(Utente u){
+    // Metodo per salvare un utente nel database
+    public void save(Utente u) {
         EntityTransaction et = em.getTransaction();
         et.begin();
 
@@ -28,11 +27,13 @@ public class UtenteDao {
         et.commit();
     }
 
-    public Utente getById(int id){
+    // Metodo per ottenere un utente dato il suo ID (Numero Tessera)
+    public Utente getById(int id) {
         return em.find(Utente.class, id);
     }
 
-    public void delete(Utente u){
+    // Metodo per eliminare un utente dal database
+    public void delete(Utente u) {
         Utente ut = getById(u.getNumeroTessera());
 
         EntityTransaction et = em.getTransaction();
