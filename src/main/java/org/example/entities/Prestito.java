@@ -8,6 +8,9 @@ import java.time.LocalDate;
 @NamedQueries({
         @NamedQuery(name = "getPrestitiByNumeroTessera",
                     query = "SELECT p FROM Prestito p WHERE p.utente.numeroTessera = :numeroTessera"),
+        @NamedQuery(
+                name = "getPrestitiByIsbn",
+                query = "SELECT p FROM Prestito p WHERE p.elemento.isbn = :isbn"),
         @NamedQuery( name = "getPrestitiScadutiNonRestituiti",
                      query = "SELECT p FROM Prestito p WHERE p.dataRestituzionePrevista < CURRENT_DATE AND p.dataRestituzioneEffettiva IS NULL")
 })
@@ -102,6 +105,7 @@ public class Prestito {
         return "Prestito{" +
                 "id=" + id +
                 ", titolo='" + tipoDescrizione + '\'' +
+                "isbn"+ elemento.getIsbn()+
                 ", dataInizioPrestito=" + dataInizioPrestito +
                 ", dataRestituzionePrevista=" + dataRestituzionePrevista +
                 ", dataRestituzioneEffettiva=" + dataRestituzioneEffettivaDescrizione +

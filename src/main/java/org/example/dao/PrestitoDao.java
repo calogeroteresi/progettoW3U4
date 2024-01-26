@@ -16,13 +16,29 @@ public class PrestitoDao {
     }
 
 
-    public void save(Prestito p){
+    public void save(Prestito p) {
         EntityTransaction et = em.getTransaction();
         et.begin();
 
-        em.persist(p);
+        int isbnDelLibro = p.getElemento().getIsbn();
+        List<Prestito> prestitiDelLibro = getPrestitiByIsbn(isbnDelLibro);
+
+        if (prestitiDelLibro.isEmpty()) {
+            em.persist(p);
+            System.out.println("Prestito salvato con successo.");
+        } else {
+            System.out.println("Il libro con ISBN " + isbnDelLibro + " è già in prestito.");
+        }
 
         et.commit();
+    }
+
+
+
+    public List<Prestito> getPrestitiByIsbn(int isbn) {
+        TypedQuery<Prestito> q = em.createNamedQuery("getPrestitiByIsbn", Prestito.class);
+        q.setParameter("isbn", isbn);
+        return q.getResultList();
     }
 
     public Prestito getById(Long id){

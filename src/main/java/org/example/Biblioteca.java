@@ -28,8 +28,8 @@ public class Biblioteca {
 //        Prestito p1= new Prestito(l1, u1, LocalDate.of(2023,11,5), LocalDate.of(2024,2,5),
 //                LocalDate.of(2024,1,7));
 //        prestitoD.save(p1);
-
-
+//
+//
 //        Utente u2 = new Utente("Maria", "Bianchi", LocalDate.of(1995, 7, 15));
 //        utenteD.save(u2);
 //
@@ -60,12 +60,10 @@ public class Biblioteca {
 //        Rivista r3 = new Rivista("Time", 2023, 120, Periodicita.SETTIMANALE);
 //        elementoD.save(r3);
 
-//        Elemento l3 = (Rivista) elementoD.getById(9);
-//        Utente u3 = utenteD.getById(7);
-//
-//        Prestito p3 = new Prestito(l3, u3, LocalDate.of(2023, 10, 15), LocalDate.of(2023, 11, 15),
-//                null);
-//        prestitoD.save(p3);
+        Elemento l3 = (Rivista) elementoD.getById(9);
+        Utente u3 = utenteD.getById(7);
+
+
 
 
 //        Libro l4 = new Libro("Cronache di Narnia", 1950, 756,
@@ -76,6 +74,10 @@ public class Biblioteca {
           Libro l4 = (Libro) elementoD.getById(2);
           System.out.println(l4);
 
+          Prestito p3 = new Prestito(l4, u3, LocalDate.of(2023, 10, 15), LocalDate.of(2023, 11, 15),
+                null);
+          prestitoD.save(p3);
+
           elementoD.getByAnnoPubblicazione(1950).stream().forEach(System.out::println);
           elementoD.getByAnnoPubblicazione(2023).stream().forEach(System.out::println);
 
@@ -84,5 +86,7 @@ public class Biblioteca {
           prestitoD.getPrestitiByNumeroTessera(7).stream().forEach((System.out::println));
 
           prestitoD.getPrestitiScadutiNonRestituiti().stream().forEach(System.out::println);
+
+
     }
 }
