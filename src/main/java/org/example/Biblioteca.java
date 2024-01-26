@@ -65,25 +65,45 @@ public class Biblioteca {
 //                "C.S. Lewis", Genere.FANTASIA);
 //        elementoD.save(l4);
 
-          Elemento l3 = (Rivista) elementoD.getById(9);
-          Utente u3 = utenteD.getById(7);
 
-          elementoD.getByAutore("Tolkien").stream().forEach(System.out::println);
-          Libro l4 = (Libro) elementoD.getById(2);
-          System.out.println(l4);
 
-          Prestito p3 = new Prestito(l4, u3, LocalDate.of(20244, 12, 15), LocalDate.of(2023, 11, 15),
-                null);
-          prestitoD.save(p3);
 
-          elementoD.getByAnnoPubblicazione(1950).stream().forEach(System.out::println);
-          elementoD.getByAnnoPubblicazione(2023).stream().forEach(System.out::println);
 
-          elementoD.getByTitolo("signo").stream().forEach(System.out::println);
 
-          prestitoD.getPrestitiByNumeroTessera(7).stream().forEach((System.out::println));
 
-          prestitoD.getPrestitiScadutiNonRestituiti().stream().forEach(System.out::println);
+        // Ottenere un elemento (Rivista) dal database con ID 9
+        Elemento l3 = (Rivista) elementoD.getById(9);
+
+        // Ottenere un utente dal database con ID 7
+        Utente u3 = utenteD.getById(7);
+
+        // Stampare tutti gli elementi (Libri) associati all'autore "Tolkien"
+        elementoD.getByAutore("Tolkien").stream().forEach(System.out::println);
+
+        // Ottenere un elemento (Libro) dal database con ID 2
+        Libro l4 = (Libro) elementoD.getById(2);
+        System.out.println(l4);
+
+        // Creare un nuovo prestito per il libro l4, assegnato all'utente u3 utilizzato per provare assegnazione di nuovi
+        //prestiti su libri già prestati
+        Prestito p3 = new Prestito(l4, u3, LocalDate.of(20244, 12, 15), LocalDate.of(2023, 11, 15), null);
+        prestitoD.save(p3);
+
+        // Stampare tutti gli elementi (Libri o Riviste) pubblicati nell'anno 1950
+        elementoD.getByAnnoPubblicazione(1950).stream().forEach(System.out::println);
+
+        // Stampare tutti gli elementi (Libri o Riviste) pubblicati nell'anno 2023
+        elementoD.getByAnnoPubblicazione(2023).stream().forEach(System.out::println);
+
+        // Stampare tutti gli elementi (Libri o Riviste) con il titolo contenente "signo"
+        elementoD.getByTitolo("signo").stream().forEach(System.out::println);
+
+        // Stampare tutti i prestiti associati al numero di tessera 7
+        prestitoD.getPrestitiByNumeroTessera(7).stream().forEach(System.out::println);
+
+        // Stampare tutti i prestiti scaduti e non restituiti
+        prestitoD.getPrestitiScadutiNonRestituiti().stream().forEach(System.out::println);
+
 
 
     }
